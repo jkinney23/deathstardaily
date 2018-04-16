@@ -19,6 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		//var_dump($this->data);
 		$this->load->view('welcome_message');
 	}
 }
