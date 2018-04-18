@@ -3,6 +3,6 @@ class Admin_Controller extends MY_Controller
 {
 	function __construct() {
 		parent::__construct();
-		//echo "Hello from Admin controller";
+		$this->data['meta_title'] = "My Awesome CMS";
 	}
 }
