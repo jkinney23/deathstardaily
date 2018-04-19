@@ -8,7 +8,7 @@ class Page extends Admin_Controller {
 	
 	public function index() {
 		// Fetch all pages
-		$this->data['pages'] = $this->page_m->get();
+		$this->data['pages'] = $this->page_m->get_with_parent();
 		
 		// Load view
 		$this->data['subview'] = 'admin/page/index';
@@ -26,13 +26,16 @@ class Page extends Admin_Controller {
 			$this->data['page'] = $this->page_m->get_new();
 		}
 		
+		// Pages for dropdown
+		$this->data['pages_no_parents'] = $this->page_m->get_no_parents();
+		
 		// Set up the form
 		$rules = $this->page_m->rules;
 		$this->form_validation->set_rules($rules);
 		
 		// Process the form
 		if ($this->form_validation->run() == TRUE) {
-			$data = $this->page_m->array_from_post(array('title', 'slug', 'body'));
+			$data = $this->page_m->array_from_post(array('title', 'slug', 'body', 'parent_id'));
 			$this->page_m->save($data, $id);
 			redirect('admin/page');
 		}
