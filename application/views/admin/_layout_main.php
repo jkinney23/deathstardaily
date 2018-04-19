@@ -26,9 +26,7 @@
 		<div class="row">
 			<!-- Main column-->
 			<div class="col-md-8">
-				<section>
-					<h2>Page name</h2>
-				</section>
+<?php $this->load->view($subview); ?>
 			</div>
 			<!-- Sidebar -->
 			<div class="col-md-4">
