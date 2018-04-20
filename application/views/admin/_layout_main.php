@@ -17,6 +17,9 @@
 			<a class="nav-link" href="<?php echo site_url('admin/page/order'); ?>">order pages</a>
 		  </li>
 		  <li class="nav-item">
+			<a class="nav-link" href="<?php echo site_url('admin/article'); ?>">news articles</a>
+		  </li>
+		  <li class="nav-item">
 			<a class="nav-link" href="<?php echo site_url('admin/user'); ?>">users</a>
 		  </li>
 		  <!--

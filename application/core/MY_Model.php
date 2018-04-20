@@ -50,13 +50,13 @@ class MY_Model extends CI_Model {
 	public function save($data, $id = NULL) {
 		// Set timestamps
 		if ($this->_timestamps == TRUE) {
-			$now = data('Y-m-d H-i-s');
+			$now = date('Y-m-d H-i-s');
 			$id || $data['created'] = $now;
 			$data['modified'] = $now;
 		}
 		// Insert
 		if ($id === NULL) {
-			!isset($data[$this->_primary_key]) || $data[$this->_primar_key] = NULL;
+			!isset($data[$this->_primary_key]) || $data[$this->_primary_key] = NULL;
 			$this->db->set($data);
 			$this->db->insert($this->_table_name);
 			$id = $this->db->insert_id();
