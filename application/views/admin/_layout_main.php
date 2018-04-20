@@ -11,14 +11,19 @@
 			<a class="nav-link" href="<?php echo site_url('admin/dashboard'); ?>">Dashboard<span class="sr-only">(current)</span></a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="<?php echo site_url('admin/page'); ?>">Pages</a>
+			<a class="nav-link" href="<?php echo site_url('admin/page'); ?>">pages</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="<?php echo site_url('admin/user'); ?>">Users</a>
+			<a class="nav-link" href="<?php echo site_url('admin/page/order'); ?>">order pages</a>
 		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="<?php echo site_url('admin/user'); ?>">users</a>
+		  </li>
+		  <!--
 		  <li class="nav-item">
 			<a class="nav-link disabled" href="#">Disabled</a>
 		  </li>
+		  -->
 		</ul>
 	  </div>
 	</nav>

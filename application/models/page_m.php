@@ -43,9 +43,37 @@ class Page_m extends MY_Model {
 		$this->db->set(array('parent_id' => 0))->where('parent_id', $id)->update($this->_table_name);;
 	}
 	
+	public function save_order($pages) {
+		if (count($pages)) {
+			foreach ($pages as $order => $page) {
+				if ($page['item_id'] != '') {
+					$data = array('parent_id' => (int) $page['parent_id'], 'order' => $order);
+					$this->db->set($data)->where($this->_primary_key, $page['item_id'])->update($this->_table_name);
+				}
+			}
+		}
+	}
+	
+	public function get_nested () {
+		$this->db->order_by('order');
+		$pages = $this->db->get('pages')->result_array();
+		
+		$array = array();
+		foreach ($pages as $page) {
+			if (!$page['parent_id']) {
+				$array[$page['id']] = $page;
+			}
+			else {
+				$array[$page['parent_id']]['children'][] = $page;
+			}
+		}
+		return $array;
+	}
+	
 	public function get_with_parent($id = NULL, $single = FALSE) {
 		$this->db->select('pages.*, p.slug as parent_slug, p.title as parent_title');
 		$this->db->join('pages as p', 'pages.parent_id=p.id', 'left');
+		$this->db->order_by('order');
 		return parent::get($id, $single);
 	}
 	
@@ -53,6 +81,8 @@ class Page_m extends MY_Model {
 		// Fetch pages without parents
 		$this->db->select('id, title');
 		$this->db->where('parent_id', 0);
+		$this->db->order_by('order');
+
 		$pages = parent::get();
 
 		// Return key => value pair array
