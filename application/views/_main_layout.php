@@ -7,17 +7,7 @@
 	</section>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item dropdown">
-					<a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Link<!--<b class="caret"></b>--></a>
-					<ul class="dropdown-menu">
-						<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-					</ul>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-			</ul>
+<?php echo get_menu($menu); ?>
 		</div>
 	</nav>
 </div>
@@ -36,3 +26,17 @@
 </div>
 
 <?php $this->load->view('components/page_tail'); ?>
+
+<!--
+			<ul class="navbar-nav">
+				<li class="nav-item dropdown">
+					<a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Link<!--<b class="caret"></b>--><!-- </a>
+					<ul class="dropdown-menu">
+						<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+			</ul>
+-->			
