@@ -9,6 +9,11 @@
 				$this->input->post('parent_id') ? $this->input->post('parent_id') : $page->parent_id); ?></td>
 	</tr>
 	<tr>
+		<td>Template</td>
+		<td><?php echo form_dropdown('template', array('page' => 'Page', 'news_archive' => 'New archive', 'homepage' => 'Homepage'),
+				$this->input->post('template') ? $this->input->post('template') : $page->template); ?></td>
+	</tr>
+	<tr>
 		<td>Title</td>
 		<td><?php echo form_input('title', set_value('title', $page->title)); ?></td>
 	</tr>
