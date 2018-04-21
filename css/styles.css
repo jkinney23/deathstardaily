@@ -1,7 +1,7 @@
 ul.navbar-nav li.dropdown:hover ul.dropdown-menu { display: block; }
 h1 a{ display: inline-block; background: url('../img/darth_vader.jpg') no-repeat; height: 70px; padding: 20px 0 0 90px; color: black; }
 h1 a:hover { text-decoration: none; color:black; }
-h2 a, h3 a { color: black; }
+h2 a { color: black; }
 
 h1, h2, h3 { font-family: gerogia, serif; font-weight: bold;}
 p.pubdate { font-style: italic; font-size: 0.9em; }

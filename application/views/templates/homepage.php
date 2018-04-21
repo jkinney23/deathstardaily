@@ -12,6 +12,7 @@
 		<!-- Sidebar -->
 		<div class="col-md-3 sidebar">
 			<h2>Recent news</h2>
+<?php echo anchor($news_archive_link, '+ News Archive'); ?>
 <?php $articles = array_slice($articles, 3); ?>
 <?php echo article_links($articles); ?>
 		</div>
