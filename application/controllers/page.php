@@ -28,21 +28,20 @@ class Page extends Frontend_Controller {
 	}
 	
 	private function _page() {
-		dump('Welcome from the page template');
-	}
+		$this->data['recent_news'] = $this->article_m->get_recent();
+  	}
 	
 	private function _homepage() {
-		$this->load->model('article_m');
-		$this->db->where('pubdate <=', date('Y-m-d'));
+		$this->article_m->set_published();
 		$this->db->limit(6);
 		$this->data['articles'] = $this->article_m->get();
 	}
 	
 	private function _news_archive() {
-		$this->load->model('article_m');
+		$this->data['recent_news'] = $this->article_m->get_recent();
 
 		// Count all articles
-		$this->db->where('pubdate <=', date('Y-m-d'));
+		$this->article_m->set_published();
 		$count = $this->db->count_all_results('articles');
 		
 		// Set up pagination
@@ -64,7 +63,7 @@ class Page extends Frontend_Controller {
 		}
 		
 		// Fetch all articles
-		$this->db->where('pubdate <=', date('Y-m-d'));
+		$this->article_m->set_published();
 		$this->db->limit($perpage, $offset);
 		$this->data['articles'] = $this->article_m->get();
 	}
