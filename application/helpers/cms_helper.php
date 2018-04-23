@@ -64,23 +64,41 @@ function get_menu($array, $child = FALSE) {
 	$str = '';
 	
 	if (count($array)) {
-		$str .= $child == FALSE ? '<ul class="navbar-nav">' . PHP_EOL : '<ul class="dropdown-menu">' . PHP_EOL;
+		$str .= $child == FALSE 
+					? '<ul class="navbar-nav">' . PHP_EOL 
+					: '<div class="dropdown-menu">' . PHP_EOL;
 		
 		foreach ($array as $item) {
 			
 			$active = $CI->uri->segment(1) == $item['slug'] ? TRUE : FALSE;
-			if (isset($item['children']) && count($item['children'])) {
+			
+			if (isset($item['children']) && count($item['children'])) {				
+				// This nav item has children/a dropdown
 				$str .= $active ? '<li class="nav-item dropdown active">' : '<li class="nav-item dropdown">';
-				$str .= '<a class="dropdown-toggle nav-link" data-toggle="dropdown" href="' . site_url(e($item['slug'])) . '">' . e($item['title']);
-				$str .= '</a>' . PHP_EOL;
+				$str .= '<a class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"';
+				$str .= 'aria-haspopup="true" aria-expanded="false" href="' . site_url(e($item['slug'])) . '">';
+				$str .= e($item['title']) . '</a>' . PHP_EOL;
+				// Get the dropdown menu items
 				$str .= get_menu($item['children'], TRUE);
+
 			}
 			else {
-				$str .= $active ? '<li class="nav-item active">' : '<li class="nav-item">';
-				$str .= '<a class="nav-link" href="' . site_url(e($item['slug'])) . '">' . e($item['title']) . '</a>';
+				if ($child) {
+					// This item is in the dropdown
+					$str .= $active ? '<a class="dropdown-item active"' : '<a class="dropdown-item"';
+					$str .= 'href="' . site_url(e($item['slug'])) . '">';
+					$str .= e($item['title']) . '</a>';
+				}
+				else {	
+					// This is a normal nav item
+					$str .= $active ? '<li class="nav-item active">' : '<li class="nav-item">';
+					$str .= '<a class="nav-link" href="' . site_url(e($item['slug'])) . '">' . e($item['title']) . '</a>';
+					$str .= '</li>';
+				}
 			}
-			$str .= '</li>' . PHP_EOL;	
+			$str .= PHP_EOL;	
 		}
+		if ($child) return $str;
 		
 		$str .= '</ul>' . PHP_EOL;
 	}

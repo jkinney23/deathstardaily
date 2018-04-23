@@ -1,4 +1,4 @@
-ul.navbar-nav li.dropdown:hover ul.dropdown-menu { display: block; }
+ul.navbar-nav li.dropdown:hover div.dropdown-menu { display: block; }
 h1 a{ display: inline-block; background: url('../img/darth_vader.jpg') no-repeat; height: 70px; padding: 20px 0 0 90px; color: black; }
 h1 a:hover { text-decoration: none; color:black; }
 h2 a { color: black; }
