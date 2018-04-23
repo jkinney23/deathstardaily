@@ -1,4 +1,10 @@
 <?php
+
+function add_meta_title($string) {
+	$CI =& get_instance();
+	$CI->data['meta_title'] = e($string) . ' - ' . $CI->data['meta_title'];
+}
+
 function btn_edit($uri) {
 	return anchor($uri, '<i class="fa fa-edit"></i>');
 }

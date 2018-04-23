@@ -5,9 +5,14 @@ class Dashboard extends Admin_Controller {
 	}
 	
 	public function index() {
+		// Fetch recently modified articles
+		$this->load->model('article_m');
+		$this->db->order_by('modified desc');
+		$this->db->limit(5);
+		$this->data['recent_articles'] = $this->article_m->get();
+		
+		// Load the views
 		$this->data['subview'] = 'admin/dashboard/index';
-		//$this->data['users'] = $this->user_m->get();
-		//var_dump($this->data['users']);
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 	
