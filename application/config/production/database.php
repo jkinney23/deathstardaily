@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '***REMOVED***';
-$db['default']['password'] = '***REMOVED***';
+$db['default']['username'] = 'username';
+$db['default']['password'] = 'password';
 $db['default']['database'] = 'ci';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
